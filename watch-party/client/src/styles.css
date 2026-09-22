@@ -1,0 +1,4783 @@
+/* =========================================================
+   WATCH PARTY
+   COMPLETE APPLICATION CSS
+   ========================================================= */
+
+
+/* =========================================================
+   1. GLOBAL VARIABLES
+   ========================================================= */
+
+:root {
+  --accent: #ff4757;
+  --accent-hover: #e94051;
+
+  --success: #2ecc71;
+  --danger: #ff5b5b;
+  --blue: #4f8dff;
+
+  --dark-bg: #0f1117;
+  --dark-surface: #171a21;
+  --dark-surface-2: #20242d;
+  --dark-surface-3: #282d37;
+  --dark-border: #2d333e;
+
+  --dark-text: #f1f3f4;
+  --dark-muted: #9da5b1;
+
+  --light-bg: #ffffff;
+  --light-surface: #f8f9fa;
+  --light-surface-2: #f1f3f4;
+  --light-border: #dadce0;
+
+  --light-text: #202124;
+  --light-muted: #5f6368;
+
+  font-family:
+    Inter,
+    "Google Sans",
+    "Segoe UI",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    Arial,
+    sans-serif;
+}
+
+
+/* =========================================================
+   2. RESET
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--dark-bg);
+  color: var(--dark-text);
+  font-family:
+    Inter,
+    "Google Sans",
+    "Segoe UI",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    Arial,
+    sans-serif;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+input {
+  outline: none;
+}
+
+
+/* =========================================================
+   3. GENERIC PAGE
+   ========================================================= */
+
+.page {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 32px 20px;
+}
+
+
+/* =========================================================
+   4. GENERIC BANNER
+   ========================================================= */
+
+.banner {
+  padding: 12px 16px;
+  border-radius: 10px;
+  margin: 16px 0;
+  text-align: left;
+}
+
+.banner-error {
+  background: rgba(255, 91, 91, 0.14);
+  color: var(--danger);
+  border: 1px solid var(--danger);
+}
+
+
+/* =========================================================
+   5. GENERIC CARD
+   ========================================================= */
+
+.card {
+  width: 300px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  padding: 24px;
+
+  background: var(--dark-surface);
+  border: 1px solid var(--dark-border);
+  border-radius: 14px;
+
+  text-align: left;
+}
+
+.card h2 {
+  margin: 0 0 4px;
+
+  font-size: 1.1rem;
+}
+
+.card label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  color: var(--dark-muted);
+  font-size: 0.85rem;
+}
+
+.card .optional {
+  color: var(--dark-muted);
+  font-weight: 400;
+}
+
+.card input {
+  width: 100%;
+
+  padding: 10px 12px;
+
+  background: var(--dark-surface-2);
+  color: var(--dark-text);
+
+  border: 1px solid var(--dark-border);
+  border-radius: 8px;
+
+  outline: none;
+}
+
+.card input:focus {
+  border-color: var(--accent);
+}
+
+
+/* =========================================================
+   6. GENERIC BUTTON
+   ========================================================= */
+
+.page button {
+  border: none;
+
+  padding: 10px 16px;
+
+  border-radius: 8px;
+
+  background: var(--accent);
+  color: white;
+
+  font-size: 0.9rem;
+  font-weight: 600;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.page button:hover {
+  background: var(--accent-hover);
+}
+
+.page button:active {
+  transform: scale(0.98);
+}
+
+
+/* =========================================================
+   7. LINK BUTTON
+   ========================================================= */
+
+.link-btn {
+  background: transparent !important;
+  color: var(--blue) !important;
+
+  padding: 4px 8px !important;
+
+  border: none !important;
+
+  font-size: 0.8rem !important;
+  font-weight: 500 !important;
+}
+
+.link-btn:hover {
+  background: transparent !important;
+  text-decoration: underline;
+}
+
+.link-btn.danger {
+  color: var(--danger) !important;
+}
+
+
+/* =========================================================
+   8. WATCH ROOM HEADER
+   ========================================================= */
+
+.watch-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  flex-wrap: wrap;
+  gap: 12px;
+
+  margin-bottom: 16px;
+}
+
+.watch-header h1 {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.room-code-block {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 7px 12px;
+
+  background: var(--dark-surface);
+  border: 1px solid var(--dark-border);
+  border-radius: 9px;
+}
+
+
+/* =========================================================
+   9. WATCH ROOM BODY
+   ========================================================= */
+
+.watch-body {
+  display: grid;
+
+  grid-template-columns: minmax(0, 1fr) 280px;
+
+  gap: 20px;
+}
+
+
+/* =========================================================
+   10. VIDEO PLAYER
+   ========================================================= */
+
+.video-wrapper {
+  position: relative;
+
+  width: 100%;
+
+  aspect-ratio: 16 / 9;
+
+  background: #000;
+
+  border-radius: 12px;
+
+  overflow: hidden;
+}
+
+.video-wrapper > div:first-child {
+  width: 100%;
+  height: 100%;
+}
+
+.video-wrapper iframe {
+  width: 100%;
+  height: 100%;
+
+  border: none;
+}
+
+.video-placeholder {
+  position: absolute;
+
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--dark-muted);
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   11. WATCH CONTROLS
+   ========================================================= */
+
+.controls {
+  margin-top: 14px;
+
+  padding: 16px;
+
+  background: var(--dark-surface);
+  border: 1px solid var(--dark-border);
+
+  border-radius: 12px;
+}
+
+.controls-row {
+  display: flex;
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 10px;
+
+  margin-bottom: 10px;
+}
+
+.controls-row input {
+  flex: 1;
+
+  min-width: 180px;
+
+  padding: 10px 12px;
+
+  background: var(--dark-surface-2);
+  color: var(--dark-text);
+
+  border: 1px solid var(--dark-border);
+
+  border-radius: 8px;
+
+  outline: none;
+}
+
+.controls-row input:focus {
+  border-color: var(--accent);
+}
+
+.play-state {
+  color: var(--dark-muted);
+  font-size: 0.85rem;
+}
+
+.hint {
+  margin: 4px 0 0;
+
+  color: var(--dark-muted);
+
+  font-size: 0.85rem;
+}
+
+
+/* =========================================================
+   12. PENDING REQUESTS
+   ========================================================= */
+
+.pending-requests {
+  margin-top: 12px;
+
+  padding-top: 12px;
+
+  border-top: 1px solid var(--dark-border);
+}
+
+.pending-request-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 7px 0;
+
+  font-size: 0.88rem;
+}
+
+
+/* =========================================================
+   13. PARTICIPANT SIDEBAR
+   ========================================================= */
+
+.watch-sidebar {
+  height: fit-content;
+
+  padding: 16px;
+
+  background: var(--dark-surface);
+
+  border: 1px solid var(--dark-border);
+
+  border-radius: 12px;
+}
+
+.participant-list h3 {
+  margin-top: 0;
+}
+
+.participant-list ul {
+  list-style: none;
+
+  margin: 0;
+  padding: 0;
+}
+
+.participant-row {
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+
+  padding: 9px 0;
+
+  border-bottom: 1px solid var(--dark-border);
+}
+
+.participant-row:last-child {
+  border-bottom: none;
+}
+
+.participant-info {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+}
+
+.role-icon {
+  font-size: 1.1rem;
+}
+
+.username {
+  flex: 1;
+
+  font-weight: 600;
+}
+
+.role-label {
+  color: var(--dark-muted);
+
+  font-size: 0.78rem;
+}
+
+.participant-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.self-role {
+  margin-top: 12px;
+
+  color: var(--dark-muted);
+
+  font-size: 0.85rem;
+}
+
+
+/* =========================================================
+   14. TOAST
+   ========================================================= */
+
+.toast {
+  position: fixed;
+
+  left: 50%;
+  bottom: 20px;
+
+  transform: translateX(-50%);
+
+  z-index: 5000;
+
+  padding: 10px 18px;
+
+  background: var(--dark-surface-2);
+
+  border: 1px solid var(--dark-border);
+
+  border-radius: 999px;
+
+  color: var(--dark-text);
+
+  font-size: 0.85rem;
+
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+
+/* =========================================================
+   =========================================================
+   15. HOME PAGE
+   =========================================================
+   ========================================================= */
+
+.meet-home {
+  min-height: 100vh;
+
+  overflow-x: hidden;
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease;
+
+  font-family:
+    Inter,
+    "Google Sans",
+    "Segoe UI",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    Arial,
+    sans-serif;
+}
+
+
+/* =========================================================
+   16. HOME HEADER
+   ========================================================= */
+
+.meet-header {
+  min-height: 88px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 24px;
+
+  padding: 0 32px;
+
+  border-bottom: 1px solid;
+
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease;
+}
+
+
+/* =========================================================
+   17. BRAND
+   ========================================================= */
+
+.meet-brand {
+  min-width: 245px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  flex-shrink: 0;
+}
+
+.brand-icon {
+  width: 44px;
+  height: 44px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 13px;
+
+  background: var(--accent);
+
+  color: #fff;
+
+  font-size: 22px;
+
+  box-shadow:
+    0 5px 14px rgba(255, 71, 87, 0.22);
+}
+
+.brand-name {
+  font-size: 26px;
+
+  font-weight: 600;
+
+  letter-spacing: -0.8px;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   18. JOIN BAR
+   ========================================================= */
+
+.meet-join-bar {
+  height: 54px;
+
+  flex: 1;
+
+  max-width: 580px;
+
+  min-width: 220px;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0 7px 0 18px;
+
+  border-radius: 28px;
+
+  transition:
+    background 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.meet-join-bar:focus-within {
+  box-shadow:
+    0 0 0 2px rgba(255, 71, 87, 0.12);
+}
+
+.join-icon {
+  width: 25px;
+
+  display: flex;
+  justify-content: center;
+
+  margin-right: 10px;
+
+  flex-shrink: 0;
+
+  font-size: 18px;
+}
+
+.meet-join-bar input {
+  flex: 1;
+
+  width: 100%;
+
+  min-width: 0;
+
+  padding: 0 !important;
+
+  border: none !important;
+  outline: none !important;
+
+  background: transparent !important;
+
+  font-size: 16px;
+
+  box-shadow: none !important;
+}
+
+.meet-join-bar input::placeholder {
+  opacity: 1;
+}
+
+
+/* =========================================================
+   19. JOIN BUTTON
+   ========================================================= */
+
+.top-join-btn {
+  height: 42px;
+
+  padding: 0 22px;
+
+  border: none;
+
+  border-radius: 22px;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.top-join-btn:hover {
+  transform: translateY(-1px);
+}
+
+.top-join-btn.active {
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   20. NEW BUTTON
+   ========================================================= */
+
+.new-room-btn {
+  height: 52px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  padding: 0 24px;
+
+  border: none;
+
+  border-radius: 26px;
+
+  font-size: 16px;
+
+  font-weight: 600;
+
+  white-space: nowrap;
+
+  flex-shrink: 0;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.new-room-btn:hover {
+  transform: translateY(-1px);
+}
+
+.new-room-btn span {
+  font-size: 22px;
+
+  line-height: 1;
+}
+
+
+/* =========================================================
+   21. THEME TOGGLE
+   ========================================================= */
+
+.theme-toggle {
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 0 6px;
+
+  border: none;
+
+  border-radius: 24px;
+
+  background: transparent !important;
+
+  color: inherit !important;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease;
+}
+
+.theme-toggle:hover {
+  background: rgba(128, 128, 128, 0.12) !important;
+}
+
+.theme-icon {
+  width: 22px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 17px;
+
+  line-height: 1;
+}
+
+.toggle-track {
+  position: relative;
+
+  width: 46px;
+  height: 26px;
+
+  display: block;
+
+  border-radius: 20px;
+
+  border: 1px solid;
+
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.toggle-thumb {
+  position: absolute;
+
+  top: 3px;
+  left: 3px;
+
+  width: 18px;
+  height: 18px;
+
+  border-radius: 50%;
+
+  background: #fff;
+
+  box-shadow:
+    0 2px 5px rgba(0, 0, 0, 0.28);
+
+  transition:
+    transform 0.25s ease;
+}
+
+
+/* =========================================================
+   22. HOME CONTENT
+   ========================================================= */
+
+.meet-content {
+  display: flex;
+
+  min-height:
+    calc(100vh - 88px);
+
+  transition:
+    background 0.25s ease;
+}
+
+
+/* =========================================================
+   23. SIDEBAR
+   ========================================================= */
+
+.meet-sidebar {
+  width: 210px;
+
+  flex-shrink: 0;
+
+  padding: 40px 18px;
+
+  border-right: 1px solid;
+
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.sidebar-item {
+  width: 100%;
+
+  min-height: 58px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 15px;
+
+  padding: 0 18px;
+
+  margin-bottom: 10px;
+
+  border: none;
+
+  border-radius: 16px;
+
+  background: transparent;
+
+  font-size: 15px;
+
+  font-weight: 500;
+
+  text-align: left;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.sidebar-icon {
+  width: 24px;
+
+  display: flex;
+  justify-content: center;
+
+  font-size: 20px;
+}
+
+
+/* =========================================================
+   24. HERO
+   ========================================================= */
+
+.meet-main {
+  flex: 1;
+
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 55px 50px;
+
+  transition:
+    background 0.25s ease;
+}
+
+.hero-content {
+  width: min(850px, 100%);
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   25. HERO ILLUSTRATION
+   ========================================================= */
+
+.hero-illustration {
+  position: relative;
+
+  width: 300px;
+  height: 180px;
+
+  margin: 0 auto 28px;
+}
+
+.screen-shape {
+  position: absolute;
+
+  left: 50%;
+  top: 35px;
+
+  transform: translateX(-50%);
+
+  width: 180px;
+  height: 115px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 22px;
+
+  border: 2px solid;
+
+  font-size: 44px;
+
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.12);
+
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.floating-circle {
+  position: absolute;
+
+  border-radius: 50%;
+}
+
+.circle-one {
+  width: 48px;
+  height: 48px;
+
+  right: 10px;
+  top: 18px;
+
+  background: #ffdc65;
+}
+
+.circle-two {
+  width: 30px;
+  height: 30px;
+
+  left: 12px;
+  bottom: 20px;
+
+  background: #ffb8d8;
+}
+
+.film-strip {
+  position: absolute;
+
+  right: 34px;
+  bottom: 10px;
+
+  font-size: 34px;
+}
+
+
+/* =========================================================
+   26. HERO TEXT
+   ========================================================= */
+
+.hero-content h1 {
+  margin: 0;
+
+  font-size:
+    clamp(42px, 5vw, 64px);
+
+  line-height: 1.08;
+
+  font-weight: 600;
+
+  letter-spacing: -2.5px;
+
+  transition:
+    color 0.25s ease;
+}
+
+.hero-content > p {
+  max-width: 580px;
+
+  margin: 24px auto 30px;
+
+  font-size: 18px;
+
+  line-height: 1.6;
+
+  transition:
+    color 0.25s ease;
+}
+
+
+/* =========================================================
+   27. HERO NEW BUTTON
+   ========================================================= */
+
+.hero-new-btn {
+  height: 54px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  padding: 0 28px;
+
+  border: none;
+
+  border-radius: 27px;
+
+  background: var(--accent);
+
+  color: white;
+
+  font-size: 16px;
+
+  font-weight: 600;
+
+  box-shadow:
+    0 6px 18px rgba(255, 71, 87, 0.25);
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.hero-new-btn:hover {
+  background: var(--accent-hover);
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 9px 24px rgba(255, 71, 87, 0.3);
+}
+
+.hero-new-btn span {
+  font-size: 22px;
+}
+
+
+/* =========================================================
+   28. HOME ERROR
+   ========================================================= */
+
+.home-error {
+  position: fixed;
+
+  left: 50%;
+  bottom: 25px;
+
+  transform: translateX(-50%);
+
+  z-index: 1000;
+
+  width: max-content;
+  max-width: calc(100vw - 40px);
+
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 14px 18px;
+
+  border-radius: 12px;
+
+  background: #fce8e6;
+
+  border: 1px solid #f5b7b1;
+
+  color: #b3261e;
+
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.home-error button {
+  padding: 4px 8px;
+
+  border: none;
+
+  background: transparent;
+
+  color: #b3261e;
+
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   29. MODAL OVERLAY
+   ========================================================= */
+
+.modal-overlay {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 2000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  backdrop-filter: blur(5px);
+
+  animation: fadeIn 0.15s ease;
+}
+
+
+/* =========================================================
+   30. PARTY MODAL
+   ========================================================= */
+
+.party-modal {
+  position: relative;
+
+  width: min(450px, 100%);
+
+  padding: 38px;
+
+  border-radius: 24px;
+
+  border: 1px solid;
+
+  box-shadow:
+    0 25px 80px rgba(0, 0, 0, 0.4);
+
+  animation: modalIn 0.2s ease;
+}
+
+
+/* =========================================================
+   31. MODAL CLOSE
+   ========================================================= */
+
+.modal-close {
+  position: absolute;
+
+  top: 17px;
+  right: 17px;
+
+  width: 38px;
+  height: 38px;
+
+  display: grid;
+  place-items: center;
+
+  padding: 0;
+
+  border: none;
+
+  border-radius: 50%;
+
+  background: transparent !important;
+
+  font-size: 27px;
+
+  line-height: 1;
+}
+
+.modal-close:hover {
+  transform: none !important;
+}
+
+
+/* =========================================================
+   32. MODAL ICON
+   ========================================================= */
+
+.modal-icon {
+  width: 58px;
+  height: 58px;
+
+  display: grid;
+  place-items: center;
+
+  margin-bottom: 18px;
+
+  border-radius: 17px;
+
+  font-size: 28px;
+}
+
+
+/* =========================================================
+   33. MODAL TITLE
+   ========================================================= */
+
+.party-modal h2 {
+  margin: 0;
+
+  font-size: 28px;
+
+  font-weight: 600;
+
+  letter-spacing: -0.6px;
+}
+
+.modal-subtitle {
+  margin: 9px 0 28px;
+
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   34. MODAL FORM
+   ========================================================= */
+
+.party-modal form {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 19px;
+}
+
+.party-modal label {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+
+  font-size: 14px;
+
+  font-weight: 600;
+}
+
+.party-modal input {
+  width: 100%;
+
+  height: 50px;
+
+  padding: 0 15px;
+
+  border: 1px solid;
+
+  border-radius: 10px;
+
+  outline: none;
+
+  font-size: 15px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.party-modal input:focus {
+  border-color: var(--accent);
+
+  box-shadow:
+    0 0 0 3px rgba(255, 71, 87, 0.12);
+}
+
+.field-hint {
+  font-size: 12px;
+
+  font-weight: 400;
+}
+
+
+/* =========================================================
+   35. MODAL PRIMARY BUTTON
+   ========================================================= */
+
+.modal-primary-btn {
+  width: 100%;
+
+  height: 52px;
+
+  margin-top: 6px;
+
+  border: none;
+
+  border-radius: 26px;
+
+  background: var(--accent);
+
+  color: white;
+
+  font-size: 15px;
+
+  font-weight: 700;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.modal-primary-btn:hover {
+  background: var(--accent-hover);
+
+  transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   =========================================================
+   36. DARK HOME THEME
+   =========================================================
+   ========================================================= */
+
+.meet-home.dark-theme {
+  background: var(--dark-bg);
+
+  color: var(--dark-text);
+}
+
+.dark-theme .meet-header {
+  background: #151820;
+
+  border-bottom-color: #292e39;
+}
+
+.dark-theme .brand-name {
+  color: #f1f3f4;
+}
+
+.dark-theme .meet-join-bar {
+  background: #20242d;
+
+  border: 1px solid #2c313c;
+}
+
+.dark-theme .meet-join-bar:focus-within {
+  background: #242934;
+}
+
+.dark-theme .join-icon {
+  color: #9aa1ab;
+}
+
+.dark-theme .meet-join-bar input {
+  color: #f1f3f4 !important;
+}
+
+.dark-theme .meet-join-bar input::placeholder {
+  color: #8b929d;
+}
+
+.dark-theme .top-join-btn {
+  background: #343943;
+
+  color: #858b96;
+}
+
+.dark-theme .top-join-btn.active {
+  background: var(--accent);
+
+  color: white;
+}
+
+.dark-theme .top-join-btn.active:hover {
+  background: var(--accent-hover);
+}
+
+.dark-theme .new-room-btn {
+  background: #173b29;
+
+  color: #69d995;
+}
+
+.dark-theme .new-room-btn:hover {
+  background: #1d4932;
+}
+
+.dark-theme .meet-content,
+.dark-theme .meet-main {
+  background: var(--dark-bg);
+}
+
+.dark-theme .meet-sidebar {
+  background: #11141a;
+
+  border-right-color: #292e39;
+}
+
+.dark-theme .sidebar-item {
+  color: #aeb4be;
+}
+
+.dark-theme .sidebar-item:hover {
+  background: #1b1f27;
+
+  color: #f1f3f4;
+}
+
+.dark-theme .sidebar-item.active {
+  background: #202b3e;
+
+  color: #70a7ff;
+}
+
+.dark-theme .screen-shape {
+  background: #1b2029;
+
+  border-color: #303744;
+
+  color: var(--accent);
+
+  box-shadow:
+    0 16px 35px rgba(0, 0, 0, 0.35);
+}
+
+.dark-theme .hero-content h1 {
+  color: #f5f7fa;
+}
+
+.dark-theme .hero-content > p {
+  color: #9da5b1;
+}
+
+.dark-theme .modal-overlay {
+  background: rgba(0, 0, 0, 0.72);
+}
+
+.dark-theme .party-modal {
+  background: #191d25;
+
+  color: #f1f3f4;
+
+  border-color: #2d333e;
+}
+
+.dark-theme .modal-close {
+  color: #9aa1ab !important;
+}
+
+.dark-theme .modal-close:hover {
+  background: #242932 !important;
+
+  color: white !important;
+}
+
+.dark-theme .modal-icon {
+  background: #302025;
+}
+
+.dark-theme .party-modal h2 {
+  color: #f1f3f4;
+}
+
+.dark-theme .modal-subtitle {
+  color: #9aa5b2;
+}
+
+.dark-theme .party-modal label {
+  color: #d8dce2;
+}
+
+.dark-theme .party-modal input {
+  background: #22262f;
+
+  border-color: #363c48;
+
+  color: #f1f3f4;
+}
+
+.dark-theme .party-modal input::placeholder {
+  color: #777f8b;
+}
+
+.dark-theme .field-hint {
+  color: #777f8b;
+}
+
+.dark-theme .theme-toggle:hover {
+  background: #22262f !important;
+}
+
+.dark-theme .toggle-track {
+  background: #343943;
+
+  border-color: #4a515e;
+}
+
+.dark-theme .toggle-thumb {
+  transform: translateX(0);
+}
+
+
+/* =========================================================
+   37. LIGHT HOME THEME
+   ========================================================= */
+
+.meet-home.light-theme {
+  background: var(--light-bg);
+
+  color: var(--light-text);
+}
+
+.light-theme .meet-header {
+  background: #ffffff;
+
+  border-bottom-color: #e8eaed;
+}
+
+.light-theme .brand-name {
+  color: #202124;
+}
+
+.light-theme .meet-join-bar {
+  background: #f1f3f4;
+
+  border: 1px solid transparent;
+}
+
+.light-theme .meet-join-bar:focus-within {
+  background: #e8eaed;
+}
+
+.light-theme .join-icon {
+  color: #5f6368;
+}
+
+.light-theme .meet-join-bar input {
+  color: #202124 !important;
+}
+
+.light-theme .meet-join-bar input::placeholder {
+  color: #5f6368;
+}
+
+.light-theme .top-join-btn {
+  background: #d9dde3;
+
+  color: #80868b;
+}
+
+.light-theme .top-join-btn.active {
+  background: var(--accent);
+
+  color: white;
+}
+
+.light-theme .top-join-btn.active:hover {
+  background: var(--accent-hover);
+}
+
+.light-theme .new-room-btn {
+  background: #d9f8e2;
+
+  color: #176b36;
+}
+
+.light-theme .new-room-btn:hover {
+  background: #c5f1d2;
+}
+
+.light-theme .meet-content,
+.light-theme .meet-main {
+  background: #ffffff;
+}
+
+.light-theme .meet-sidebar {
+  background: #ffffff;
+
+  border-right-color: #f1f3f4;
+}
+
+.light-theme .sidebar-item {
+  color: #4b4f52;
+}
+
+.light-theme .sidebar-item:hover {
+  background: #f5f7f8;
+}
+
+.light-theme .sidebar-item.active {
+  background: #e8f0fe;
+
+  color: #1967d2;
+}
+
+.light-theme .screen-shape {
+  background: #f0f3f8;
+
+  border-color: #d9dee7;
+
+  color: var(--accent);
+
+  box-shadow:
+    0 14px 30px rgba(60, 64, 67, 0.1);
+}
+
+.light-theme .hero-content h1 {
+  color: #202124;
+}
+
+.light-theme .hero-content > p {
+  color: #5f6368;
+}
+
+.light-theme .modal-overlay {
+  background: rgba(32, 33, 36, 0.45);
+}
+
+.light-theme .party-modal {
+  background: #ffffff;
+
+  color: #202124;
+
+  border-color: #dadce0;
+
+  box-shadow:
+    0 24px 70px rgba(0, 0, 0, 0.2);
+}
+
+.light-theme .modal-close {
+  color: #5f6368 !important;
+}
+
+.light-theme .modal-close:hover {
+  background: #f1f3f4 !important;
+}
+
+.light-theme .modal-icon {
+  background: #fff0f2;
+}
+
+.light-theme .party-modal h2 {
+  color: #202124;
+}
+
+.light-theme .modal-subtitle {
+  color: #5f6368;
+}
+
+.light-theme .party-modal label {
+  color: #3c4043;
+}
+
+.light-theme .party-modal input {
+  background: #ffffff;
+
+  border-color: #dadce0;
+
+  color: #202124;
+}
+
+.light-theme .party-modal input::placeholder {
+  color: #80868b;
+}
+
+.light-theme .field-hint {
+  color: #80868b;
+}
+
+.light-theme .theme-toggle:hover {
+  background: #f1f3f4 !important;
+}
+
+.light-theme .toggle-track {
+  background: #d9e1ec;
+
+  border-color: #cbd3df;
+}
+
+.light-theme .toggle-thumb {
+  transform: translateX(20px);
+}
+
+
+/* =========================================================
+   38. ANIMATIONS
+   ========================================================= */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalIn {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(10px)
+      scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+}
+
+
+/* =========================================================
+   39. WATCH ROOM RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 800px) {
+  .watch-body {
+    grid-template-columns: 1fr;
+  }
+
+  .watch-sidebar {
+    width: 100%;
+  }
+}
+
+
+/* =========================================================
+   40. HOME RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1100px) {
+  .meet-header {
+    gap: 16px;
+  }
+
+  .meet-brand {
+    min-width: 210px;
+  }
+
+  .meet-join-bar {
+    max-width: 480px;
+  }
+}
+
+
+@media (max-width: 900px) {
+  .meet-header {
+    padding: 0 18px;
+
+    gap: 14px;
+  }
+
+  .meet-brand {
+    min-width: auto;
+  }
+
+  .brand-name {
+    font-size: 22px;
+  }
+
+  .meet-sidebar {
+    width: 150px;
+
+    padding: 32px 12px;
+  }
+
+  .sidebar-item {
+    padding: 0 14px;
+  }
+
+  .meet-main {
+    padding: 40px 25px;
+  }
+}
+
+
+/* =========================================================
+   41. TABLET / MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+  .meet-header {
+    min-height: 72px;
+
+    flex-wrap: wrap;
+
+    padding: 14px;
+
+    gap: 10px;
+  }
+
+  .meet-brand {
+    flex: 1;
+  }
+
+  .brand-name {
+    font-size: 21px;
+  }
+
+  .new-room-btn {
+    height: 46px;
+
+    padding: 0 18px;
+  }
+
+  .theme-toggle {
+    padding: 0 3px;
+  }
+
+  .theme-icon {
+    display: none;
+  }
+
+  .meet-join-bar {
+    order: 3;
+
+    flex-basis: 100%;
+
+    width: 100%;
+
+    max-width: none;
+  }
+
+  .meet-content {
+    min-height:
+      calc(100vh - 145px);
+  }
+
+  .meet-sidebar {
+    display: none;
+  }
+
+  .meet-main {
+    width: 100%;
+
+    padding: 40px 20px;
+  }
+
+  .hero-illustration {
+    transform: scale(0.85);
+
+    margin-bottom: 5px;
+  }
+
+  .hero-content h1 {
+    font-size: 42px;
+
+    letter-spacing: -1.5px;
+  }
+
+  .hero-content > p {
+    font-size: 16px;
+
+    margin-top: 20px;
+  }
+
+  .hero-new-btn {
+    height: 50px;
+
+    padding: 0 24px;
+  }
+
+  .party-modal {
+    padding: 30px 24px;
+
+    border-radius: 20px;
+  }
+}
+
+
+/* =========================================================
+   42. SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+  .meet-header {
+    padding: 12px;
+  }
+
+  .brand-icon {
+    width: 38px;
+    height: 38px;
+
+    font-size: 19px;
+  }
+
+  .brand-name {
+    font-size: 19px;
+  }
+
+  .new-room-btn {
+    height: 42px;
+
+    padding: 0 14px;
+
+    font-size: 14px;
+  }
+
+  .new-room-btn span {
+    font-size: 19px;
+  }
+
+  .top-join-btn {
+    padding: 0 17px;
+  }
+
+  .hero-content h1 {
+    font-size: 36px;
+  }
+
+  .hero-content > p {
+    font-size: 15px;
+  }
+
+  .hero-illustration {
+    transform: scale(0.72);
+
+    margin-bottom: -20px;
+  }
+
+  .home-error {
+    width: calc(100vw - 24px);
+  }
+
+  .watch-header {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+  .room-code-block {
+    width: 100%;
+
+    justify-content: space-between;
+  }
+}
+
+
+/* =========================================================
+   43. EXTRA SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 360px) {
+  .brand-name {
+    font-size: 17px;
+  }
+
+  .new-room-btn {
+    padding: 0 11px;
+  }
+
+  .hero-content h1 {
+    font-size: 32px;
+  }
+
+  .hero-new-btn {
+    width: 100%;
+  }
+
+  .party-modal {
+    padding: 26px 18px;
+  }
+
+  
+}
+
+/* =========================================================
+   WATCH ROOM — GOOGLE MEET STYLE
+   ========================================================= */
+
+.watch-room-page {
+  min-height: 100vh;
+
+  width: 100%;
+
+  overflow: hidden;
+
+  font-family:
+    Inter,
+    "Google Sans",
+    "Segoe UI",
+    system-ui,
+    sans-serif;
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease;
+}
+
+
+/* =========================================================
+   DARK
+   ========================================================= */
+
+.watch-dark {
+  --room-bg: #0f1117;
+  --room-surface: #171a21;
+  --room-surface-2: #20242d;
+  --room-border: #2d333e;
+  --room-text: #f1f3f4;
+  --room-muted: #9da5b1;
+}
+
+
+/* =========================================================
+   LIGHT
+   ========================================================= */
+
+.watch-light {
+  --room-bg: #ffffff;
+  --room-surface: #f8f9fa;
+  --room-surface-2: #f1f3f4;
+  --room-border: #dadce0;
+  --room-text: #202124;
+  --room-muted: #5f6368;
+}
+
+
+/* =========================================================
+   PAGE
+   ========================================================= */
+
+.watch-room-page {
+  background: var(--room-bg);
+
+  color: var(--room-text);
+}
+
+
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+
+.room-navbar {
+  height: 76px;
+
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    210px
+    minmax(350px, 1fr)
+    auto;
+
+  align-items: center;
+
+  gap: 22px;
+
+  padding: 0 28px;
+
+  background: var(--room-surface);
+
+  border-bottom: 1px solid var(--room-border);
+
+  position: relative;
+
+  z-index: 100;
+}
+
+
+/* =========================================================
+   BRAND
+   ========================================================= */
+
+.room-brand {
+  display: flex;
+  align-items: center;
+
+  gap: 11px;
+
+  white-space: nowrap;
+}
+
+.room-brand-icon {
+  width: 40px;
+  height: 40px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 11px;
+
+  background: #ff4757;
+
+  font-size: 20px;
+
+  box-shadow:
+    0 4px 12px
+    rgba(255, 71, 87, 0.22);
+}
+
+.room-brand span {
+  font-size: 21px;
+
+  font-weight: 600;
+
+  letter-spacing: -0.5px;
+}
+
+
+/* =========================================================
+   NAVBAR VIDEO TOOLS
+   ========================================================= */
+
+.room-video-tools {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  min-width: 0;
+}
+
+.room-video-input {
+  width: 100%;
+  max-width: 380px;
+
+  height: 42px;
+
+  padding: 0 15px;
+
+  background: var(--room-surface-2);
+
+  color: var(--room-text);
+
+  border: 1px solid var(--room-border);
+
+  border-radius: 10px;
+
+  outline: none;
+
+  font-size: 14px;
+}
+
+.room-video-input::placeholder {
+  color: var(--room-muted);
+}
+
+.room-video-input:focus {
+  border-color: #ff4757;
+
+  box-shadow:
+    0 0 0 2px
+    rgba(255, 71, 87, 0.12);
+}
+
+
+.room-change-video-btn {
+  height: 42px;
+
+  padding: 0 14px;
+
+  flex-shrink: 0;
+
+  border: none;
+
+  border-radius: 10px;
+
+  background: #ff4757;
+
+  color: white;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.room-change-video-btn:hover {
+  background: #e94051;
+}
+
+
+/* =========================================================
+   SMALL SEEK
+   ========================================================= */
+
+.navbar-seek {
+  display: flex;
+  align-items: center;
+
+  gap: 5px;
+
+  flex-shrink: 0;
+}
+
+.navbar-seek input {
+  width: 68px;
+  height: 42px;
+
+  padding: 0 9px;
+
+  background: var(--room-surface-2);
+
+  color: var(--room-text);
+
+  border: 1px solid var(--room-border);
+
+  border-radius: 9px;
+
+  outline: none;
+
+  font-size: 13px;
+}
+
+.navbar-seek input:focus {
+  border-color: #ff4757;
+}
+
+.navbar-seek button {
+  height: 42px;
+
+  padding: 0 12px;
+
+  border: none;
+
+  border-radius: 9px;
+
+  background: var(--room-surface-2);
+
+  border: 1px solid var(--room-border);
+
+  color: var(--room-text);
+
+  font-size: 13px;
+
+  cursor: pointer;
+}
+
+.navbar-seek button:hover {
+  background: var(--room-border);
+}
+
+
+/* =========================================================
+   NAVBAR RIGHT
+   ========================================================= */
+
+.room-navbar-actions {
+  display: flex;
+  align-items: center;
+
+  justify-content: flex-end;
+
+  gap: 8px;
+
+  white-space: nowrap;
+}
+
+.room-code {
+  display: flex;
+  align-items: center;
+
+  gap: 5px;
+
+  padding: 0 12px;
+
+  height: 40px;
+
+  background: var(--room-surface-2);
+
+  border: 1px solid var(--room-border);
+
+  border-radius: 9px;
+
+  font-size: 13px;
+}
+
+.room-code span {
+  color: var(--room-muted);
+}
+
+.room-code strong {
+  color: var(--room-text);
+}
+
+
+.navbar-copy-btn,
+.navbar-leave-btn {
+  height: 40px;
+
+  padding: 0 12px;
+
+  border: none;
+
+  border-radius: 9px;
+
+  background: transparent;
+
+  font-size: 13px;
+
+  font-weight: 600;
+}
+
+.navbar-copy-btn {
+  color: #6ea8ff;
+}
+
+.navbar-copy-btn:hover {
+  background: rgba(110, 168, 255, 0.1);
+}
+
+.navbar-leave-btn {
+  color: #ff6b6b;
+}
+
+.navbar-leave-btn:hover {
+  background: rgba(255, 91, 91, 0.1);
+}
+
+
+/* =========================================================
+   THEME SWITCH
+   ========================================================= */
+
+.room-theme-toggle {
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+
+  padding: 0 4px;
+
+  border: none;
+
+  background: transparent;
+
+  color: var(--room-text);
+
+  cursor: pointer;
+}
+
+.room-toggle-track {
+  position: relative;
+
+  width: 42px;
+  height: 24px;
+
+  border-radius: 20px;
+
+  background: #343943;
+
+  border: 1px solid #4a515e;
+}
+
+.room-toggle-thumb {
+  position: absolute;
+
+  top: 3px;
+  left: 3px;
+
+  width: 16px;
+  height: 16px;
+
+  border-radius: 50%;
+
+  background: white;
+
+  transition:
+    transform 0.25s ease;
+}
+
+.watch-light .room-toggle-track {
+  background: #d9e1ec;
+
+  border-color: #cbd3df;
+}
+
+.watch-light .room-toggle-thumb {
+  transform:
+    translateX(18px);
+}
+
+
+/* =========================================================
+   MAIN LAYOUT
+   ========================================================= */
+
+.room-layout {
+  height:
+    calc(100vh - 76px);
+
+  display: flex;
+
+  position: relative;
+}
+
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+.room-sidebar {
+  width: 280px;
+
+  height: 100%;
+
+  flex-shrink: 0;
+
+  padding: 18px;
+
+  background: var(--room-surface);
+
+  border-right: 1px solid var(--room-border);
+
+  overflow-y: auto;
+
+  transition:
+    width 0.25s ease,
+    transform 0.25s ease;
+}
+
+
+/* sidebar hidden */
+
+.sidebar-hidden .room-sidebar {
+  width: 0;
+
+  padding-left: 0;
+  padding-right: 0;
+
+  overflow: hidden;
+
+  border-right: none;
+}
+
+
+/* =========================================================
+   SIDEBAR TOP
+   ========================================================= */
+
+.sidebar-top {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  margin-bottom: 20px;
+}
+
+.sidebar-close-btn {
+  width: 38px;
+  height: 38px;
+
+  display: grid;
+  place-items: center;
+
+  padding: 0;
+
+  border: none;
+
+  border-radius: 9px;
+
+  background: var(--room-surface-2);
+
+  color: var(--room-text);
+
+  font-size: 19px;
+}
+
+.sidebar-close-btn:hover {
+  background: var(--room-border);
+}
+
+.sidebar-title {
+  font-size: 16px;
+
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   OPEN SIDEBAR BUTTON
+   ========================================================= */
+
+.sidebar-open-btn {
+  position: absolute;
+
+  top: 18px;
+  left: 16px;
+
+  z-index: 50;
+
+  width: 42px;
+  height: 42px;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid var(--room-border);
+
+  border-radius: 10px;
+
+  background: var(--room-surface);
+
+  color: var(--room-text);
+
+  box-shadow:
+    0 5px 20px rgba(0, 0, 0, 0.18);
+}
+
+
+/* =========================================================
+   SIDEBAR SECTION
+   ========================================================= */
+
+.sidebar-section {
+  padding: 15px 0;
+
+  border-top: 1px solid var(--room-border);
+}
+
+.sidebar-section:first-of-type {
+  border-top: none;
+}
+
+.sidebar-section-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 12px;
+
+  font-size: 14px;
+
+  font-weight: 600;
+}
+
+.sidebar-count,
+.request-badge {
+  min-width: 22px;
+  height: 22px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 6px;
+
+  border-radius: 50%;
+
+  background: var(--room-surface-2);
+
+  color: var(--room-muted);
+
+  font-size: 11px;
+}
+
+
+/* =========================================================
+   SIDEBAR PARTICIPANTS
+   ========================================================= */
+
+.room-sidebar .participant-list {
+  padding: 0;
+}
+
+.room-sidebar .participant-list h3 {
+  display: none;
+}
+
+.room-sidebar .participant-row {
+  padding: 10px 5px;
+
+  border-bottom: 1px solid var(--room-border);
+}
+
+.room-sidebar .participant-info {
+  min-width: 0;
+}
+
+.room-sidebar .username {
+  color: var(--room-text);
+
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   REQUESTS
+   ========================================================= */
+
+.sidebar-request-list {
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+.sidebar-request {
+  padding: 11px;
+
+  background: var(--room-surface-2);
+
+  border: 1px solid var(--room-border);
+
+  border-radius: 9px;
+}
+
+.sidebar-request strong {
+  display: block;
+
+  font-size: 13px;
+}
+
+.sidebar-request span {
+  display: block;
+
+  margin-top: 3px;
+
+  color: var(--room-muted);
+
+  font-size: 11px;
+}
+
+.empty-sidebar {
+  padding: 10px;
+
+  color: var(--room-muted);
+
+  font-size: 12px;
+}
+
+
+/* =========================================================
+   ROOM INFO
+   ========================================================= */
+
+.room-info-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 8px 4px;
+
+  color: var(--room-muted);
+
+  font-size: 12px;
+}
+
+.room-info-item strong {
+  color: var(--room-text);
+}
+
+
+/* =========================================================
+   MAIN VIDEO AREA
+   ========================================================= */
+
+.room-main {
+  flex: 1;
+
+  min-width: 0;
+
+  height: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  padding: 25px 32px 18px;
+
+  overflow: auto;
+}
+
+
+/* =========================================================
+   VIDEO
+   ========================================================= */
+
+.room-video-container {
+  position: relative;
+
+  width: 100%;
+
+  max-width: 1180px;
+
+  margin: 0 auto;
+}
+
+.room-video-container .video-wrapper {
+  width: 100%;
+
+  aspect-ratio: 16 / 9;
+
+  border-radius: 14px;
+
+  overflow: hidden;
+
+  background: #000;
+
+  box-shadow:
+    0 10px 35px rgba(0, 0, 0, 0.28);
+}
+
+
+/* =========================================================
+   ERROR
+   ========================================================= */
+
+.room-video-error {
+  width: 100%;
+
+  max-width: 1180px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  margin-top: 12px;
+
+  padding: 12px 15px;
+
+  border-radius: 10px;
+
+  background: rgba(255, 71, 87, 0.12);
+
+  border: 1px solid rgba(255, 71, 87, 0.4);
+
+  color: #ff777f;
+
+  font-size: 13px;
+}
+
+.room-video-error span {
+  flex: 1;
+}
+
+.room-video-error button {
+  border: none;
+
+  background: transparent;
+
+  color: #ff777f;
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   BOTTOM BAR
+   ========================================================= */
+
+.room-bottom-bar {
+  width: 100%;
+
+  max-width: 1180px;
+
+  min-height: 74px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 15px;
+
+  margin-top: 14px;
+
+  padding: 10px 14px;
+
+  background: var(--room-surface);
+
+  border: 1px solid var(--room-border);
+
+  border-radius: 14px;
+
+  position: relative;
+}
+
+
+/* =========================================================
+   CONTROLS
+   ========================================================= */
+
+.playback-controls {
+  flex: 1;
+
+  min-width: 0;
+}
+
+
+/*
+   These rules make the existing Controls component
+   look like a bottom control bar.
+*/
+
+.playback-controls .controls {
+  margin: 0;
+
+  padding: 0;
+
+  border: none;
+
+  background: transparent;
+}
+
+.playback-controls .controls-row {
+  margin: 0;
+
+  gap: 8px;
+}
+
+
+
+.playback-controls .controls-row input {
+  display: none;
+}
+
+
+/* =========================================================
+   REACTION
+   ========================================================= */
+
+.reaction-container {
+  position: relative;
+
+  flex-shrink: 0;
+}
+
+.reaction-btn {
+  width: 48px;
+  height: 48px;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid var(--room-border);
+
+  border-radius: 50%;
+
+  background: var(--room-surface-2);
+
+  color: var(--room-text);
+
+  font-size: 23px;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.15s ease,
+    background 0.15s ease;
+}
+
+.reaction-btn:hover {
+  transform: scale(1.05);
+
+  background: var(--room-border);
+}
+
+
+/* =========================================================
+   FLOATING REACTIONS (over the video)
+   ========================================================= */
+
+.reaction-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  overflow: hidden;
+
+  border-radius: 14px;
+
+  pointer-events: none;
+
+  z-index: 5;
+}
+
+.floating-reaction {
+  position: absolute;
+
+  bottom: 12%;
+
+  font-size: 28px;
+
+  line-height: 1;
+
+  animation: floatReaction 2.4s ease-out forwards;
+}
+
+@keyframes floatReaction {
+  0% {
+    opacity: 0;
+
+    transform: translateY(0) scale(0.6);
+  }
+
+  15% {
+    opacity: 1;
+
+    transform: translateY(-20px) scale(1.05);
+  }
+
+  100% {
+    opacity: 0;
+
+    transform: translateY(-160px) scale(1);
+  }
+}
+
+
+/* =========================================================
+   EMOJI PICKER
+   ========================================================= */
+
+.reaction-picker {
+  position: absolute;
+
+  right: 0;
+
+  bottom: 60px;
+
+  display: flex;
+
+  gap: 5px;
+
+  padding: 9px;
+
+  background: var(--room-surface);
+
+  border: 1px solid var(--room-border);
+
+  border-radius: 13px;
+
+  box-shadow:
+    0 12px 35px rgba(0, 0, 0, 0.3);
+
+  z-index: 200;
+}
+
+.reaction-picker button {
+  width: 35px;
+  height: 35px;
+
+  display: grid;
+  place-items: center;
+
+  padding: 0;
+
+  border: none;
+
+  border-radius: 8px;
+
+  background: transparent;
+
+  font-size: 20px;
+
+  cursor: pointer;
+}
+
+.reaction-picker button:hover {
+  background: var(--room-surface-2);
+}
+
+
+/* =========================================================
+   LIGHT MODE SHADOWS
+   ========================================================= */
+
+.watch-light .room-navbar {
+  box-shadow:
+    0 1px 8px rgba(0, 0, 0, 0.04);
+}
+
+.watch-light .room-video-container .video-wrapper {
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+
+/* =========================================================
+   LARGE DESKTOP
+   ========================================================= */
+
+@media (min-width: 1400px) {
+  .room-navbar {
+    grid-template-columns:
+      220px
+      minmax(500px, 1fr)
+      auto;
+
+    padding: 0 36px;
+  }
+
+  .room-main {
+    padding-left: 45px;
+    padding-right: 45px;
+  }
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1100px) {
+  .room-navbar {
+    grid-template-columns:
+      190px
+      minmax(280px, 1fr)
+      auto;
+
+    gap: 12px;
+
+    padding: 0 16px;
+  }
+
+  .room-brand span {
+    font-size: 18px;
+  }
+
+  .room-video-input {
+    max-width: 260px;
+  }
+
+  .room-code {
+    display: none;
+  }
+
+  .room-main {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 800px) {
+  .room-navbar {
+    height: auto;
+
+    min-height: 72px;
+
+    grid-template-columns: 1fr auto;
+
+    padding: 10px 14px;
+
+    gap: 10px;
+  }
+
+  .room-video-tools {
+    grid-column: 1 / -1;
+
+    width: 100%;
+
+    order: 3;
+  }
+
+  .room-video-input {
+    max-width: none;
+  }
+
+  .room-navbar-actions {
+    gap: 4px;
+  }
+
+  .navbar-copy-btn,
+  .navbar-leave-btn {
+    display: none;
+  }
+
+  .room-layout {
+    height:
+      calc(100vh - 125px);
+  }
+
+  .room-sidebar {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    height: 100vh;
+
+    z-index: 1000;
+
+    box-shadow:
+      8px 0 30px rgba(0, 0, 0, 0.3);
+  }
+
+  .sidebar-hidden .room-sidebar {
+    transform: translateX(-100%);
+
+    width: 280px;
+  }
+
+  .room-main {
+    width: 100%;
+
+    padding: 16px 10px;
+  }
+
+  .room-bottom-bar {
+    min-height: 62px;
+
+    padding: 7px 9px;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 520px) {
+  .room-brand span {
+    display: none;
+  }
+
+  .room-brand-icon {
+    width: 38px;
+    height: 38px;
+  }
+
+  .room-change-video-btn {
+    padding: 0 10px;
+
+    font-size: 12px;
+  }
+
+  .navbar-seek input {
+    width: 52px;
+  }
+
+  .navbar-seek button {
+    display: none;
+  }
+
+  .room-video-container .video-wrapper {
+    border-radius: 9px;
+  }
+
+  .reaction-picker {
+    right: -5px;
+
+    max-width: calc(100vw - 20px);
+
+    flex-wrap: wrap;
+  }
+}
+/* =========================================================
+   WATCH ROOM CONTROLS
+   ========================================================= */
+
+.room-controls {
+  width: 100%;
+  margin-top: 12px;
+}
+
+
+/* =========================================================
+   MAIN CONTROL BAR
+   ========================================================= */
+
+.room-controls-main {
+  min-height: 66px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 10px 14px;
+
+  background: var(--room-surface);
+
+  border: 1px solid var(--room-border);
+
+  border-radius: 14px;
+}
+
+
+/* =========================================================
+   CONTROL BUTTON
+   ========================================================= */
+
+.room-control-btn {
+  height: 42px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  padding: 0 17px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  background: #ff4757;
+
+  color: #ffffff;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.15s ease,
+    background 0.15s ease;
+}
+
+.room-control-btn:hover {
+  background: #e94051;
+
+  transform: translateY(-1px);
+}
+
+.room-control-btn:active {
+  transform: scale(0.97);
+}
+
+.control-icon {
+  font-size: 14px;
+
+  line-height: 1;
+}
+
+
+/* =========================================================
+   PLAY STATE
+   ========================================================= */
+
+.room-play-state {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  margin-left: 5px;
+
+  padding: 0 10px;
+
+  color: var(--room-muted);
+
+  font-size: 13px;
+
+  white-space: nowrap;
+}
+
+.state-dot {
+  width: 8px;
+  height: 8px;
+
+  border-radius: 50%;
+
+  display: block;
+}
+
+.state-dot.playing {
+  background: #2ecc71;
+
+  box-shadow:
+    0 0 0 4px rgba(46, 204, 113, 0.12);
+}
+
+.state-dot.paused {
+  background: #9da5b1;
+}
+
+
+/* =========================================================
+   SPACER
+   ========================================================= */
+
+.controls-spacer {
+  flex: 1;
+}
+
+
+/* =========================================================
+   EMOJI
+   ========================================================= */
+
+.emoji-control {
+  position: relative;
+}
+
+.emoji-button {
+  width: 42px;
+  height: 42px;
+
+  display: grid;
+  place-items: center;
+
+  padding: 0;
+
+  border: 1px solid var(--room-border);
+
+  border-radius: 50%;
+
+  background: var(--room-surface-2);
+
+  color: var(--room-text);
+
+  font-size: 20px;
+
+  cursor: pointer;
+
+  transition:
+    background 0.15s ease,
+    transform 0.15s ease;
+}
+
+.emoji-button:hover {
+  background: var(--room-border);
+
+  transform: scale(1.05);
+}
+
+
+/* =========================================================
+   EMOJI PICKER
+   ========================================================= */
+
+.emoji-picker {
+  position: absolute;
+
+  right: 0;
+
+  bottom: 52px;
+
+  z-index: 100;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 3px;
+
+  padding: 8px 10px;
+
+  background: var(--room-surface);
+
+  border: 1px solid var(--room-border);
+
+  border-radius: 12px;
+
+  box-shadow:
+    0 12px 35px rgba(0, 0, 0, 0.35);
+}
+
+.emoji-option {
+  width: 34px;
+  height: 34px;
+
+  display: grid;
+  place-items: center;
+
+  padding: 0;
+
+  border: none;
+
+  border-radius: 8px;
+
+  background: transparent;
+
+  font-size: 19px;
+
+  cursor: pointer;
+
+  transition:
+    background 0.15s ease,
+    transform 0.15s ease;
+}
+
+.emoji-option:hover {
+  background: var(--room-surface-2);
+
+  transform: scale(1.15);
+}
+
+
+/* =========================================================
+   REQUEST STATUS
+   ========================================================= */
+
+.request-status {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  margin-top: 8px;
+
+  padding: 9px 12px;
+
+  border-radius: 9px;
+
+  background: var(--room-surface);
+
+  border: 1px solid var(--room-border);
+
+  color: var(--room-muted);
+
+  font-size: 12px;
+}
+
+
+/* =========================================================
+   REQUEST SUMMARY
+   ========================================================= */
+
+.request-summary {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  margin-top: 8px;
+
+  padding: 9px 12px;
+
+  border-radius: 9px;
+
+  background: rgba(255, 71, 87, 0.08);
+
+  border: 1px solid rgba(255, 71, 87, 0.2);
+
+  color: var(--room-muted);
+
+  font-size: 12px;
+}
+
+.request-summary-icon {
+  font-size: 15px;
+}
+
+
+/* =========================================================
+   LIGHT THEME
+   ========================================================= */
+
+.watch-light .request-status {
+  background: #f8f9fa;
+}
+
+.watch-light .request-summary {
+  background: #fff5f6;
+
+  border-color: #ffd4d8;
+
+  color: #5f6368;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  .room-controls-main {
+    padding: 9px;
+
+    gap: 7px;
+  }
+
+  .room-control-btn {
+    flex: 1;
+
+    padding: 0 10px;
+
+    font-size: 13px;
+  }
+
+  .room-play-state {
+    display: none;
+  }
+
+  .emoji-button {
+    width: 40px;
+    height: 40px;
+  }
+
+  .emoji-picker {
+    right: 0;
+
+    max-width: calc(100vw - 30px);
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+  }
+}
+
+/* =========================================================
+   JOIN WATCH PARTY PAGE
+   ========================================================= */
+
+.join-page {
+  min-height: 100vh;
+
+  background: #0b0d12;
+
+  color: #f5f7fb;
+}
+
+
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+
+.join-navbar {
+  height: 72px;
+
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0 32px;
+
+  background: #11141b;
+
+  border-bottom: 1px solid #242934;
+
+  box-sizing: border-box;
+}
+
+
+/* BRAND */
+
+.join-brand {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  font-size: 20px;
+
+  font-weight: 700;
+
+  white-space: nowrap;
+}
+
+.join-brand-icon {
+  width: 42px;
+  height: 42px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 12px;
+
+  background: #ff4757;
+
+  box-shadow:
+    0 6px 18px rgba(255, 71, 87, 0.25);
+
+  font-size: 21px;
+}
+
+
+/* NAV CENTER */
+
+.join-nav-center {
+  margin-left: auto;
+
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+}
+
+
+/* SEARCH */
+
+.join-nav-search {
+  width: 310px;
+  height: 44px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 0 16px;
+
+  box-sizing: border-box;
+
+  border-radius: 24px;
+
+  background: #1c2029;
+
+  border: 1px solid #2a303b;
+
+  color: #929aa8;
+
+  font-size: 14px;
+}
+
+.join-nav-search span:first-child {
+  font-size: 14px;
+}
+
+
+/* JOIN BUTTON */
+
+.join-nav-join {
+  height: 44px;
+
+  padding: 0 20px;
+
+  border: none;
+
+  border-radius: 22px;
+
+  background: #292e38;
+
+  color: #747c89;
+
+  font-size: 14px;
+
+  font-weight: 600;
+}
+
+.join-nav-join:disabled {
+  cursor: default;
+}
+
+
+/* NEW */
+
+.join-nav-new {
+  height: 44px;
+
+  padding: 0 20px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+
+  border: none;
+
+  border-radius: 22px;
+
+  background: #113e2c;
+
+  color: #5ee59d;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.join-nav-new:hover {
+  background: #165038;
+
+  transform: translateY(-1px);
+}
+
+
+/* THEME */
+
+.join-theme-button {
+  height: 44px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 0 4px;
+
+  border: none;
+
+  background: transparent;
+
+  color: #f4c95d;
+
+  cursor: pointer;
+
+  font-size: 15px;
+}
+
+.join-theme-toggle {
+  width: 42px;
+  height: 24px;
+
+  display: flex;
+  align-items: center;
+
+  padding: 3px;
+
+  box-sizing: border-box;
+
+  border-radius: 20px;
+
+  background: #303642;
+
+  border: 1px solid #424958;
+}
+
+.join-theme-toggle span {
+  width: 18px;
+  height: 18px;
+
+  border-radius: 50%;
+
+  background: #f4f6f8;
+
+  display: block;
+}
+
+
+/* =========================================================
+   MAIN
+   ========================================================= */
+
+.join-content {
+  min-height: calc(100vh - 72px);
+
+  display: flex;
+  justify-content: center;
+
+  padding: 50px 20px 70px;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.join-hero {
+  width: 100%;
+
+  max-width: 620px;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   VISUAL
+   ========================================================= */
+
+.join-visual {
+  position: relative;
+
+  width: 190px;
+  height: 125px;
+
+  margin-bottom: 22px;
+}
+
+.join-video-card {
+  position: absolute;
+
+  left: 30px;
+  top: 20px;
+
+  width: 130px;
+  height: 88px;
+
+  display: grid;
+  place-items: center;
+
+  background: #181d26;
+
+  border: 1px solid #343b48;
+
+  border-radius: 18px;
+
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.25);
+
+  transform: rotate(-2deg);
+}
+
+.join-video-card span {
+  width: 42px;
+  height: 42px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 50%;
+
+  background: #ff4757;
+
+  color: white;
+
+  font-size: 17px;
+
+  padding-left: 2px;
+}
+
+.join-circle {
+  position: absolute;
+
+  border-radius: 50%;
+}
+
+.join-circle-yellow {
+  width: 38px;
+  height: 38px;
+
+  top: 5px;
+  right: 10px;
+
+  background: #ffd85c;
+}
+
+.join-circle-pink {
+  width: 27px;
+  height: 27px;
+
+  bottom: 2px;
+  left: 10px;
+
+  background: #ff9dcc;
+}
+
+.join-film {
+  position: absolute;
+
+  right: 17px;
+  bottom: 3px;
+
+  font-size: 27px;
+}
+
+
+/* =========================================================
+   HEADING
+   ========================================================= */
+
+.join-hero h1 {
+  margin: 0;
+
+  font-size: clamp(34px, 4vw, 48px);
+
+  line-height: 1.08;
+
+  letter-spacing: -1.5px;
+
+  font-weight: 750;
+}
+
+.join-description {
+  max-width: 500px;
+
+  margin: 14px 0 18px;
+
+  color: #929aa8;
+
+  font-size: 15px;
+
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   ROOM BADGE
+   ========================================================= */
+
+.join-room-badge {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 10px;
+
+  margin-bottom: 22px;
+
+  padding: 8px 15px;
+
+  border-radius: 20px;
+
+  background: #151922;
+
+  border: 1px solid #292f3b;
+
+  color: #8992a2;
+
+  font-size: 13px;
+}
+
+.join-room-badge strong {
+  color: #ffffff;
+
+  letter-spacing: 1px;
+
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   JOIN CARD
+   ========================================================= */
+
+.join-card {
+  width: 100%;
+
+  max-width: 470px;
+
+  box-sizing: border-box;
+
+  padding: 25px;
+
+  text-align: left;
+
+  background: #151820;
+
+  border: 1px solid #292f3a;
+
+  border-radius: 18px;
+
+  box-shadow:
+    0 20px 55px rgba(0, 0, 0, 0.28);
+}
+
+
+/* CARD HEADER */
+
+.join-card-header {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 13px;
+
+  margin-bottom: 22px;
+}
+
+.join-card-icon {
+  width: 42px;
+  height: 42px;
+
+  flex-shrink: 0;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 12px;
+
+  background: #202631;
+
+  font-size: 20px;
+}
+
+.join-card-header h2 {
+  margin: 1px 0 5px;
+
+  font-size: 17px;
+}
+
+.join-card-header p {
+  margin: 0;
+
+  color: #858e9d;
+
+  font-size: 12px;
+
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   ERROR
+   ========================================================= */
+
+.join-error {
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  margin-bottom: 16px;
+
+  padding: 11px 12px;
+
+  border-radius: 10px;
+
+  background: rgba(255, 71, 87, 0.1);
+
+  border: 1px solid rgba(255, 71, 87, 0.3);
+
+  color: #ff7180;
+
+  font-size: 12px;
+}
+
+.join-error button {
+  margin-left: auto;
+
+  border: none;
+
+  background: transparent;
+
+  color: #ff7180;
+
+  font-size: 18px;
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   INPUT
+   ========================================================= */
+
+.join-input-label {
+  display: block;
+
+  margin-bottom: 15px;
+
+  color: #b8c0cc;
+
+  font-size: 13px;
+
+  font-weight: 500;
+}
+
+.join-input-wrapper {
+  height: 50px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  margin-top: 8px;
+
+  padding: 0 14px;
+
+  box-sizing: border-box;
+
+  border-radius: 10px;
+
+  background: #1d222c;
+
+  border: 1px solid #343b47;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.join-input-wrapper:focus-within {
+  border-color: #ff4757;
+
+  box-shadow:
+    0 0 0 3px rgba(255, 71, 87, 0.12);
+}
+
+.join-input-wrapper span {
+  font-size: 15px;
+
+  opacity: 0.7;
+}
+
+.join-input-wrapper input {
+  width: 100%;
+
+  height: 100%;
+
+  border: none;
+
+  outline: none;
+
+  background: transparent;
+
+  color: #f5f7fb;
+
+  font-size: 14px;
+}
+
+.join-input-wrapper input::placeholder {
+  color: #626b79;
+}
+
+
+/* =========================================================
+   SUBMIT
+   ========================================================= */
+
+.join-submit {
+  width: 100%;
+
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  margin-top: 5px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  background: #ff4757;
+
+  color: white;
+
+  font-size: 14px;
+
+  font-weight: 650;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 8px 22px rgba(255, 71, 87, 0.2);
+
+  transition:
+    background 0.2s ease,
+    transform 0.15s ease,
+    box-shadow 0.2s ease;
+}
+
+.join-submit:hover {
+  background: #ff394a;
+
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 11px 28px rgba(255, 71, 87, 0.28);
+}
+
+.join-submit:active {
+  transform: scale(0.99);
+}
+
+
+/* =========================================================
+   BACK
+   ========================================================= */
+
+.join-back {
+  width: 100%;
+
+  margin-top: 15px;
+
+  border: none;
+
+  background: transparent;
+
+  color: #7fa8ff;
+
+  font-size: 13px;
+
+  cursor: pointer;
+}
+
+.join-back:hover {
+  color: #a9c4ff;
+
+  text-decoration: underline;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.join-footer-text {
+  margin: 24px 0 0;
+
+  color: #626b79;
+
+  font-size: 12px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 800px) {
+
+  .join-navbar {
+    padding: 0 18px;
+  }
+
+  .join-nav-search,
+  .join-nav-join {
+    display: none;
+  }
+
+  .join-content {
+    padding-top: 35px;
+  }
+}
+
+
+@media (max-width: 520px) {
+
+  .join-navbar {
+    height: 64px;
+  }
+
+  .join-brand {
+    font-size: 17px;
+  }
+
+  .join-brand-icon {
+    width: 36px;
+    height: 36px;
+
+    border-radius: 10px;
+  }
+
+  .join-nav-new {
+    height: 38px;
+
+    padding: 0 13px;
+  }
+
+  .join-theme-button {
+    height: 38px;
+  }
+
+  .join-content {
+    min-height: calc(100vh - 64px);
+
+    padding: 28px 15px 45px;
+  }
+
+  .join-visual {
+    transform: scale(0.85);
+
+    margin-bottom: 10px;
+  }
+
+  .join-hero h1 {
+    font-size: 32px;
+  }
+
+  .join-description {
+    font-size: 14px;
+  }
+
+  .join-card {
+    padding: 20px;
+
+    border-radius: 15px;
+  }
+}
+
+/* =====================================================
+   WATCH ROOM NAVBAR
+===================================================== */
+
+.room-navbar {
+  height: 94px;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0 38px;
+  box-sizing: border-box;
+
+  background: #151820;
+  border-bottom: 1px solid #292d38;
+
+  gap: 28px;
+
+  position: relative;
+  z-index: 100;
+}
+
+
+/* =====================================================
+   BRAND
+===================================================== */
+
+.room-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  min-width: 225px;
+  flex-shrink: 0;
+
+  color: #ffffff;
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.room-brand-icon {
+  width: 43px;
+  height: 43px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 11px;
+
+  background: linear-gradient(
+    135deg,
+    #ff4d64,
+    #ff3654
+  );
+
+  font-size: 21px;
+}
+
+
+/* =====================================================
+   VIDEO TOOLS
+===================================================== */
+
+.room-video-tools {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  flex: 1;
+  min-width: 0;
+}
+
+
+/* =====================================================
+   VIDEO FORM
+===================================================== */
+
+.room-video-form {
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+
+  margin: 0;
+  padding: 0;
+
+  flex-shrink: 0;
+}
+
+.room-video-input {
+  width: 275px;
+  height: 43px;
+
+  box-sizing: border-box;
+
+  padding: 0 15px;
+
+  border: 1px solid #ff4059;
+  border-radius: 10px;
+
+  outline: none;
+
+  background: #1d212b;
+  color: #ffffff;
+
+  font-size: 14px;
+}
+
+.room-video-input::placeholder {
+  color: #7c8494;
+}
+
+.room-video-input:focus {
+  border-color: #ff536a;
+
+  box-shadow:
+    0 0 0 2px rgba(255, 64, 89, 0.12);
+}
+
+
+/* =====================================================
+   CHANGE BUTTON
+===================================================== */
+
+.room-change-video-btn {
+  height: 43px;
+
+  padding: 0 17px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: #ff4059;
+  color: #ffffff;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  white-space: nowrap;
+
+  transition: 0.2s ease;
+}
+
+.room-change-video-btn:hover {
+  background: #ff536a;
+  transform: translateY(-1px);
+}
+
+
+/* =====================================================
+   SEEK
+===================================================== */
+
+.navbar-seek {
+  display: flex;
+  align-items: center;
+
+  gap: 6px;
+
+  margin: 0;
+  padding: 0;
+
+  flex-shrink: 0;
+}
+
+.navbar-seek input {
+  width: 76px;
+  height: 43px;
+
+  box-sizing: border-box;
+
+  padding: 0 12px;
+
+  border: 1px solid #303642;
+  border-radius: 9px;
+
+  outline: none;
+
+  background: #1d212b;
+  color: #ffffff;
+
+  font-size: 13px;
+}
+
+.navbar-seek input::placeholder {
+  color: #788091;
+}
+
+.navbar-seek button {
+  height: 43px;
+
+  padding: 0 15px;
+
+  border: 1px solid #303642;
+  border-radius: 9px;
+
+  background: #202632;
+  color: #e5e7eb;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  white-space: nowrap;
+
+  transition: 0.2s ease;
+}
+
+.navbar-seek button:hover {
+  background: #2a3040;
+}
+
+
+/* =====================================================
+   RIGHT ACTIONS
+===================================================== */
+
+.room-navbar-actions {
+  display: flex;
+  align-items: center;
+
+  gap: 20px;
+
+  flex-shrink: 0;
+}
+
+
+/* =====================================================
+   ROOM CODE
+===================================================== */
+
+.room-code {
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 5px;
+
+  padding: 0 13px;
+
+  border: 1px solid #2d3340;
+  border-radius: 9px;
+
+  background: #1b2029;
+
+  color: #8992a4;
+
+  font-size: 13px;
+
+  white-space: nowrap;
+}
+
+.room-code strong {
+  color: #e8ebf0;
+  font-weight: 700;
+}
+
+
+/* =====================================================
+   COPY
+===================================================== */
+
+.navbar-copy-btn {
+  border: none;
+  background: transparent;
+
+  padding: 7px 0;
+
+  color: #65a7ff;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  white-space: nowrap;
+}
+
+.navbar-copy-btn:hover {
+  opacity: 0.8;
+}
+
+
+/* =====================================================
+   LEAVE
+===================================================== */
+
+.navbar-leave-btn {
+  border: none;
+  background: transparent;
+
+  padding: 7px 0;
+
+  color: #ff6878;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  white-space: nowrap;
+}
+
+.navbar-leave-btn:hover {
+  opacity: 0.8;
+}
+
+
+/* =====================================================
+   THEME BUTTON
+===================================================== */
+
+.room-theme-toggle {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 0;
+
+  border: none;
+  background: transparent;
+
+  cursor: pointer;
+}
+
+.theme-icon {
+  font-size: 17px;
+  line-height: 1;
+}
+
+
+/* =====================================================
+   THEME SWITCH
+===================================================== */
+
+.room-toggle-track {
+  width: 42px;
+  height: 24px;
+
+  display: block;
+
+  position: relative;
+
+  border-radius: 20px;
+
+  background: #3a404c;
+
+  transition: 0.25s ease;
+}
+
+.room-toggle-thumb {
+  position: absolute;
+
+  width: 18px;
+  height: 18px;
+
+  top: 3px;
+  left: 3px;
+
+  border-radius: 50%;
+
+  background: #ffffff;
+
+  transition: 0.25s ease;
+}
+
+.toggle-thumb-light {
+  transform: translateX(18px);
+}
+
+/* =====================================================
+   RESPONSIVE NAVBAR
+===================================================== */
+
+@media (max-width: 1250px) {
+
+  .room-navbar {
+    padding: 0 22px;
+    gap: 18px;
+  }
+
+  .room-brand {
+    min-width: 180px;
+  }
+
+  .room-video-input {
+    width: 220px;
+  }
+
+  .room-navbar-actions {
+    gap: 13px;
+  }
+}
+
+
+@media (max-width: 1050px) {
+
+  .room-brand span {
+    display: none;
+  }
+
+  .room-brand {
+    min-width: auto;
+  }
+
+  .room-video-input {
+    width: 190px;
+  }
+
+  .room-code {
+    display: none;
+  }
+}
+
+
+@media (max-width: 850px) {
+
+  .room-navbar {
+    height: auto;
+    min-height: 94px;
+
+    flex-wrap: wrap;
+
+    padding: 15px 20px;
+  }
+
+  .room-video-tools {
+    order: 3;
+
+    width: 100%;
+
+    flex-basis: 100%;
+  }
+
+  .room-video-form {
+    flex: 1;
+  }
+
+  .room-video-input {
+    width: 100%;
+  }
+
+  .room-navbar-actions {
+    margin-left: auto;
+  }
+}
